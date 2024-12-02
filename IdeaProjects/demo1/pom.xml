@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo1.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- Título de la aplicación -->
+    <Label fx:id="welcomeText" text="Gestión de Laboratorio" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Registro de Equipos -->
+    <VBox spacing="10">
+        <Label text="Registrar Nuevo Equipo"/>
+        <TextField fx:id="nombreEquipoField" promptText="Nombre del equipo"/>
+        <TextField fx:id="descripcionEquipoField" promptText="Descripción"/>
+        <ComboBox fx:id="tipoEquipoComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Computadora"/>
+                    <String fx:value="Herramienta"/>
+                    <String fx:value="Material"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button text="Registrar Equipo" onAction="#registrarEquipo"/>
+    </VBox>
+
+    <!-- Gestión de Reservas -->
+    <VBox spacing="10">
+        <Label text="Ver Reservas"/>
+        <TableView fx:id="reservasTableView">
+            <columns>
+                <TableColumn text="Equipo" prefWidth="150"/>
+                <TableColumn text="Hora de Reserva" prefWidth="150"/>
+                <TableColumn text="Estado" prefWidth="150"/>
+            </columns>
+        </TableView>
+        <Button text="Mostrar Reservas" onAction="#mostrarReservas"/>
+    </VBox>
+
+    <!-- Asignación de Horarios -->
+    <VBox spacing="10">
+        <Label text="Asignar Horario de Reserva"/>
+        <ComboBox fx:id="equipoComboBox"/>
+        <TextField fx:id="horaReservaField" promptText="Hora de Reserva"/>
+        <Button text="Asignar Reserva" onAction="#asignarReserva"/>
+    </VBox>
+
+</VBox>
